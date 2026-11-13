@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    Content Security Policy: only load scripts/styles from this site and only
+    call your API Gateway endpoint. If your API is not in us-east-1, change the
+    region in connect-src to match your invoke URL.
+  -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src https://*.execute-api.us-east-1.amazonaws.com; base-uri 'none'; form-action 'none'">
+  <title>Bedtime Story Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>🌙 Bedtime Stories</h1>
+      <p class="subtitle">A new gentle story with a moral, every time.</p>
+    </header>
+
+    <button id="story-btn" type="button" class="story-btn">
+      Tell me a story
+    </button>
+
+    <!-- aria-live lets screen readers announce loading, errors, and new stories -->
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <article id="story-card" class="story-card" hidden aria-labelledby="story-title">
+      <h2 id="story-title" class="story-title" tabindex="-1"></h2>
+      <div id="story-text" class="story-text"></div>
+      <p id="story-moral" class="story-moral"></p>
+    </article>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
